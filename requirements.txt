@@ -1,3 +1,4 @@
 Flask~=2.0.2
 gTTS~=2.2.3
 Flask_APScheduler == 1.8.0
+Werkzeug==1.0.1
