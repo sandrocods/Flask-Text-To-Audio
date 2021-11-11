@@ -1,19 +1,12 @@
 # Flask Text To Audio Code by Sandro Putraa
 from flask import Flask, request, jsonify, send_from_directory, render_template
 from gtts import gTTS, langs
-from flask_apscheduler import APScheduler
 import os
 import time
 
 
 app = Flask(__name__, template_folder="template")
-scheduler = APScheduler()
 
-def scheduleTask():
-    directory = os.getcwd() + "/tmp/"
-    for list_file in os.listdir(directory):
-        os.remove(os.path.join(directory, list_file))
-        print(" * [ CronJobs ] File " + list_file + " Deleted")
 
 @app.route("/")
 def home():
@@ -58,6 +51,4 @@ def api():
 
 
 if __name__ == '__main__':
-    scheduler.add_job(id='Scheduled Task', func=scheduleTask, trigger="interval", seconds=180)
-    scheduler.start()
     app.run(debug=False, threaded=True, host='0.0.0.0')
